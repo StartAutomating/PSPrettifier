@@ -12,7 +12,7 @@ Get-Prettifier
     [PSCustomObject]@{
         Table = Get-Prettifier |
             .Name {
-                "[$_.DisplayName]($($_.Name)"
+                "[$_.DisplayName]($($_.Name))"
             } .Synopsis
     }
 }
