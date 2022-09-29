@@ -25,10 +25,9 @@ Get-Prettifier
 ~~~
 
 
-|Name                                                                         |Synopsis      |
-|-----------------------------------------------------------------------------|--------------|
-|[IndentGroups.prettify.ps1.DisplayName](Prettifiers/IndentGroups.prettify.ps1|Indents Groups|
-
+|Name                                                                          |Synopsis      |
+|------------------------------------------------------------------------------|--------------|
+|[IndentGroups.prettify.ps1.DisplayName](Prettifiers/IndentGroups.prettify.ps1)|Indents Groups|
 
 
 
