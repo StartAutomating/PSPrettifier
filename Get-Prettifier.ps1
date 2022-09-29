@@ -1,7 +1,7 @@
 #region Piecemeal [ 0.3.5 ] : Easy Extensible Plugins for PowerShell
 # Install-Module Piecemeal -Scope CurrentUser 
 # Import-Module Piecemeal -Force 
-# Install-Piecemeal -ExtensionNoun 'Prettifier' -ExtensionPattern '\.(?>pretty|prettify|prettifier)\.ps1$' -ExtensionTypeName 'Prettifier' -OutputPath '.\Get-Prettifier.ps1'
+# Install-Piecemeal -ExtensionNoun 'Prettifier' -ExtensionPattern '\.(?>prettify|prettifier)\.ps1$' -ExtensionTypeName 'Prettifier' -OutputPath '.\Get-Prettifier.ps1'
 function Get-Prettifier
 {
     <#
@@ -157,7 +157,7 @@ function Get-Prettifier
     )
 
     begin {
-        $PrettifierPattern = '\.(?>pretty|prettify|prettifier)\.ps1$'
+        $PrettifierPattern = '\.(?>prettify|prettifier)\.ps1$'
         $PrettifierTypeName = 'Prettifier'
         #region Define Inner Functions
         function WhereExtends {
