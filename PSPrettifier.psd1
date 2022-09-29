@@ -6,6 +6,7 @@
     Copyright = '2022 Start-Automating'
     Author = 'James Brundage'    
     CompanyName = 'Start-Automating'
+    FormatsToProcess = 'PSPrettifier.format.ps1xml'
     PrivateData = @{
         PSData = @{
             ProjectURI = 'https://github.com/StartAutomating/PSPrettifier'
