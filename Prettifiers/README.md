@@ -7,9 +7,9 @@ Get-Prettifier
 ~~~
 
 
-|Name                                                             |Synopsis      |
-|-----------------------------------------------------------------|--------------|
-|[IndentGroups.prettify.ps1.DisplayName](IndentGroups.prettify.ps1|Indents Groups|
+|Name                                                              |Synopsis      |
+|------------------------------------------------------------------|--------------|
+|[IndentGroups.prettify.ps1.DisplayName](IndentGroups.prettify.ps1)|Indents Groups|
 
 
 
