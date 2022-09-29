@@ -523,7 +523,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Use Piecemeal
-        uses: StartAutomating/Piecmeal@main
+        uses: StartAutomating/Piecemeal@main
         id: Piecemeal
       - name: BuildPipeScript
         uses: StartAutomating/PipeScript@main
