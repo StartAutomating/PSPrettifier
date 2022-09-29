@@ -7,9 +7,10 @@ Get-Prettifier
 ~~~
 
 
-|Name                                                              |Synopsis      |
-|------------------------------------------------------------------|--------------|
-|[IndentGroups.prettify.ps1.DisplayName](IndentGroups.prettify.ps1)|Indents Groups|
+|Name                                                                            |Synopsis                         |
+|--------------------------------------------------------------------------------|---------------------------------|
+|[HangLongAssignments.prettify.ps1.DisplayName](HangLongAssignments.prettify.ps1)|Hangs long assignment statements.|
+|[IndentGroups.prettify.ps1.DisplayName](IndentGroups.prettify.ps1)              |Indents Groups                   |
 
 
 
