@@ -84,7 +84,7 @@ process {
             }            
         }
         # add the grouping token.
-        $null = $stringBuilder.Append($groupToken.Content)
+        $null = $stringBuilder.Append($groupToken.Content)    
         
         # If the token was a group start
         if ($isGroupStart) {
