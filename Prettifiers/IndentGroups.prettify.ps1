@@ -86,6 +86,10 @@ process {
         # add the grouping token.
         $null = $stringBuilder.Append($groupToken.Content)    
         
+        if ($IsGroupEnd -and $tokens[$groupIndex + 1].Type -eq 'keyword') {
+            $null = $stringBuilder.Append(' ')
+        }
+        
         # If the token was a group start
         if ($isGroupStart) {
             $depth++ # increment depth
