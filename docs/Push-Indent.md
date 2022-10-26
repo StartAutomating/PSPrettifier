@@ -131,6 +131,10 @@ By default, this will match PowerShell multiline comment ends.
 ---
 #### **SingleLine**
 
+If set, will indent even if the content is a single line.
+
+
+
 > **Type**: ```[Switch]```
 
 > **Required**: false
