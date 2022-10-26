@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<!-- Generated with EZOut 1.9.4: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<!-- Generated with EZOut 1.9.7: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
 <Configuration>
   <ViewDefinitions>
     <View>
@@ -130,6 +130,7 @@
     [switch]$Bold,
 
     # If set, will render as italic.
+    [Alias('Italics')]
     [switch]$Italic,
 
     # If set, will render as faint
@@ -170,7 +171,7 @@
 
         $n =0
         $cssClasses = @()
-        $styleAttributes =
+        $colorAttributes =         
             @(:nextColor foreach ($hc in $ForegroundColor,$BackgroundColor) {
                 $n++
                 if (-not $hc) { continue }
@@ -302,6 +303,7 @@
                 
             })
         
+        $styleAttributes = @() + $colorAttributes
         
         $styleAttributes += @(
             if ($Bold) {
@@ -376,7 +378,7 @@
                 "&lt;/span&gt;"
             }
             elseif ($canUseANSI) {
-                if ($Bold -or $Faint) {        
+                if ($Bold -or $Faint -or $colorAttributes -match '\[1;') {
                     "$esc[22m"
                 }
                 if ($Italic) {
