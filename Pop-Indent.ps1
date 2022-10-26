@@ -17,17 +17,41 @@ function Pop-Indent
     param(
     # The text to outdent
     [string]
-    $Text
+    $Text,
+
+    # If set, will remove indentation from a single line.
+    [Alias('FirstLine')]
+    [switch]
+    $SingleLine
     )
 
+    begin {
+        $countIndent = [Regex]::new('^(?<i>\s{0,})')
+    }
     process {
         # Split the text into lines
         $textLines =@($text -split '(?>\r\n|\n)')
         # If there was only one line, change nothing
-        if ($textLines.Length -eq 1) { return $text }
+        if ($textLines.Length -eq 1 -and -not $SingleLine) { return $text }
         # Set the target indentation to zero.
-        $targetIndent = 0 
+        $targetIndent = -1 
 
+        for ($lineOffset = 0; $lineOffset -le ($textLines.Count / 2); $lineOffset++) {
+            
+            $firstLineOffset = $(
+                $null = $textLines[$lineOffset] -match $countIndent;
+                $matches.i.Length
+            )
+            $lastLineOffset = $(
+                $null = $textLines[(-1 - $lineOffset)] -match $countIndent
+                $matches.i.Length
+            )
+            $offsetMax = [Math]::max($firstLineOffset,$lastLineOffset)
+            if ($offsetMax) {
+                $targetIndent = $offsetMax
+                break
+            }
+        }
         
         $newlines = # Walk over each line and adjust it's space.
             foreach ($textLine in $textLines) {
@@ -36,7 +60,7 @@ function Pop-Indent
                 }
                 else {
                     # If we have the target indentation,            
-                    if ($targetIndent) {
+                    if ($targetIndent -ge 0) {
                         # remove that many leading whitespace characters.
                         $textLine -replace "^\s{$targetIndent}"
                     }
