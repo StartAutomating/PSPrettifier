@@ -1,15 +1,20 @@
 <#
+.SYNOPSIS
+    Normalizes Assignment Statements
+.DESCRIPTION
+    Normalizes a series of assignment statements.
+    
+    This Ensures that the equals sign is at a standardized position.
+.LINK
+    Expand-ScriptBlock
 .EXAMPLE
     Expand-ScriptBlock {
         $a = 'a'
         $aa = 'aa'
         $abc = 'abc'
-    }
-    .\NormalizeAssignment.prettify.ps1 -ScriptBlock {
-        
-    }
+    } -Prettifier NormalizeAssignment
 .EXAMPLE
-    .\NormalizeAssignment.prettify.ps1 -ScriptBlock {
+    Expand-ScriptBlock {
         $a = 'a'
         $aa = 'aa'
         if ($a) {
