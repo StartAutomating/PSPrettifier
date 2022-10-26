@@ -31,14 +31,30 @@ function Push-Indent
     # By default, this will match PowerShell herestring starts.
     [Alias('HereStringEnd')]
     [Regex]
-    $HereDocEnd = '^["'']@'
+    $HereDocEnd = '^["'']@',
+
+    # Many languages support multiline comments, which should not be indented.
+    # -CommentStart describes the start of a multiline comment.
+    # By default, this will match PowerShell multiline comment starts.
+    [Regex]
+    $CommentStart = '\<\#',
+
+    # Many languages support multiline comments, which should not be indented.
+    # -CommentEnd describes the start of a multiline comment.
+    # By default, this will match PowerShell multiline comment ends.
+    [Regex]
+    $CommentEnd  = '\#\>',
+
+    [Alias('FirstLine')]
+    [switch]
+    $SingleLine
     )
 
     process {
-        $poppedText = Pop-Indent -Text $text
+        $poppedText = Pop-Indent -Text $text -SingleLine:$SingleLine
         $text = $poppedText
         $textLines =@($text -split '[\r\n]+')
-        if ($textLines.Length -eq 1) { 
+        if ($textLines.Length -eq 1 -and -not $SingleLine) { 
             return $text
         }
         
@@ -55,9 +71,9 @@ function Push-Indent
                     $textLine
                 }
             
-                if ($textLine -match $HereDocStart) {
+                if ($textLine -match $HereDocStart -or $textLine -match $CommentStart) {
                     $InHereDoc = $true
-                } elseif ($textLine -match $HereDocEnd) {
+                } elseif ($textLine -match $HereDocEnd -or $textLine -match $commentEnd) {
                     $InHereDoc = $false
                 }
             }) -join [Environment]::NewLine
