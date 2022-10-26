@@ -86,10 +86,7 @@ process {
                 } while (
                     $tokens[$groupIndex + $depthModifier].Type -eq 'GroupEnd' -or 
                     $tokens[$groupIndex + $depthModifier].Content -eq ']'
-                )
-                if ($depthModifier -ne 1) {
-                    $null = $null
-                }
+                )                
                 # or indent group ends by the current minus one.
                 $stringBuilder.Append(' ' * ($indent * ($depth - $depthModifier)))
             }            
