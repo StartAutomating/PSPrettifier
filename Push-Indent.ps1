@@ -45,6 +45,7 @@ function Push-Indent
     [Regex]
     $CommentEnd  = '\#\>',
 
+    # If set, will indent even if the content is a single line.
     [Alias('FirstLine')]
     [switch]
     $SingleLine
