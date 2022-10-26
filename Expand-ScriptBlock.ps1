@@ -16,18 +16,6 @@ function Expand-ScriptBlock {
              }
             }
         }
-    .Example
-        Expand-ScriptBlock -ScriptBlock {
-            if (1) {
-            $x = "ThisIsASequenceOfStuff",
-               "ThatTakesUpLotsOfSpace",
-               "SoTheAssignmentShouldBeHanging", $(
-                    if ($y) {
-                        "z"
-                    }
-                )
-            }
-        }
     #>
     [Alias('PSPrettify')]
     param(
@@ -51,7 +39,7 @@ function Expand-ScriptBlock {
     begin {
         $prettifiers = 
             if ($Prettifier) {
-                Get-Prettifier -PrettifierName "(?>$($Prettifier -join '|')" -Match
+                Get-Prettifier -PrettifierName "(?>$($Prettifier -join '|'))" -Match
             } else {
                 Get-Prettifier
             }        
