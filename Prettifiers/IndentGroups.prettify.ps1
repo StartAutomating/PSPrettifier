@@ -113,7 +113,7 @@ process {
         $TextBetween = 
             $text.Substring($index)        
         $null =
-            $stringBuilder.Append((Push-Indent -Text $TextBetween -Indent ($indent * $depth)))
+            $stringBuilder.Append((Push-Indent -Text $TextBetween -Indent ($indent * $depth) -SingleLine))
     }
 
     try {
