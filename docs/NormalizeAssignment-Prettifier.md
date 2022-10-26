@@ -2,10 +2,21 @@
 Prettifiers/NormalizeAssignment.prettify.ps1
 --------------------------------------------
 ### Synopsis
-
+Normalizes Assignment Statements
 
 ---
 ### Description
+
+Normalizes a series of assignment statements.
+
+This Ensures that the equals sign is at a standardized position.
+
+---
+### Related Links
+* [Expand-ScriptBlock](Expand-ScriptBlock.md)
+
+
+
 ---
 ### Examples
 #### EXAMPLE 1
@@ -14,15 +25,12 @@ Expand-ScriptBlock {
     $a = 'a'
     $aa = 'aa'
     $abc = 'abc'
-}
-.\NormalizeAssignment.prettify.ps1 -ScriptBlock {
-    
-}
+} -Prettifier NormalizeAssignment
 ```
 
 #### EXAMPLE 2
 ```PowerShell
-.\NormalizeAssignment.prettify.ps1 -ScriptBlock {
+Expand-ScriptBlock {
     $a = 'a'
     $aa = 'aa'
     if ($a) {
@@ -65,7 +73,6 @@ Expand-ScriptBlock {
 Prettifiers/NormalizeAssignment.prettify.ps1 [-ScriptBlock] <ScriptBlock> [[-Indent] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
