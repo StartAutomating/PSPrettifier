@@ -19,6 +19,7 @@
     }    
 
 #>
+[Reflection.AssemblyMetadata("Rank","100")]
 param(
 # The [ScriptBlock] to prettify
 [Parameter(Mandatory)]
@@ -79,8 +80,18 @@ process {
                 # indent group starts by the current depth
                 $stringBuilder.Append(' ' * ($indent * $depth))
             } elseif ($isGroupEnd) {
+                $depthModifier = -1
+                do {
+                    $depthModifier++
+                } while (
+                    $tokens[$groupIndex + $depthModifier].Type -eq 'GroupEnd' -or 
+                    $tokens[$groupIndex + $depthModifier].Content -eq ']'
+                )
+                if ($depthModifier -ne 1) {
+                    $null = $null
+                }
                 # or indent group ends by the current minus one.
-                $stringBuilder.Append(' ' * ($indent * ($depth - 1)))
+                $stringBuilder.Append(' ' * ($indent * ($depth - $depthModifier)))
             }            
         }
         # add the grouping token.
@@ -89,7 +100,7 @@ process {
         if ($IsGroupEnd -and $tokens[$groupIndex + 1].Type -eq 'keyword') {
             $null = $stringBuilder.Append(' ')
         }
-        
+
         # If the token was a group start
         if ($isGroupStart) {
             $depth++ # increment depth
@@ -108,5 +119,10 @@ process {
             $stringBuilder.Append((Push-Indent -Text $TextBetween -Indent ($indent * $depth)))
     }
 
-    [ScriptBlock]::Create("$stringBuilder")
+    try {
+        [ScriptBlock]::Create("$stringBuilder")
+    } catch {
+        $_
+        "$stringBuilder"
+    }
 }
