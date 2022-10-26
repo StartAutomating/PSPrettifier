@@ -19,10 +19,10 @@ param(
 $ScriptBlock,
 
 # The threshold of what makes an assignment 'too long'.
-# By default, 60 characters.
+# By default, 200 characters.
 [Alias('TooLong')]
 [int]
-$MaximumAssignmentLength = 60,
+$MaximumAssignmentLength = 200,
 
 # The indentation level.
 [int]
@@ -33,8 +33,9 @@ process {
     # Find all of the long assignments.
     $longAssignments = $ScriptBlock.Ast.FindAll({
         param($ast)
-        $ast -is [Management.Automation.Language.AssignmentStatementAst] -and
-        $ast.Right.Extent.ToString().Length -gt $MaximumAssignmentLength
+        $ast -is [Management.Automation.Language.AssignmentStatementAst] -and                
+        $ast.Right.Extent.ToString().Length -gt $MaximumAssignmentLength -and
+        $ast.Extent -notmatch '[\r\n]{1,}'
     }, $true)
 
     # Determine the start offset and stringify the script.
@@ -47,22 +48,35 @@ process {
     @(foreach ($longAssignment in $longAssignments) {
         # and determine it's offset 
         $assignmentOffset = $longAssignment.Extent.StartOffset - $startOffset
+        $equalIndex = $text.IndexOf("=", $assignmentOffset)
         # and indent.
         $longAssignmentIndent = [Regex]::Match($text.Substring(0, $assignmentOffset),
-            "^(?<i>\s{0,})", 'RightToLeft').Groups["i"].Length
+            "^(?<i>[\s-[\r\n]]{0,})", 'Multiline,RightToLeft').Groups["i"].Length
+        $hangingIndent = $longAssignmentIndent + ($equalIndex - $assignmentOffset)
         # If there's code between assignments
         if ($assignmentOffset -gt $index) {
             # include it as is
-            $text.Substring($index, $assignmentOffset - $index - 1)
+            $text.Substring($index, $assignmentOffset - $index - 1) -replace '[\s\r\n]+$' + ([Environment]::NewLine)
         }
 
-        # Otherwise, indent the left side
-        (Push-Indent -Text ($longAssignment.Left.Extent.ToString() +
-            ' =' +
-            [Environment]::NewLine # add a newline
-        )  -Indent $longAssignmentIndent) +
+        $indentedLeft = 
+            # Otherwise, indent the left side
+            (Push-Indent -Text ($longAssignment.Left.Extent.ToString() +
+                ' =' +
+                [Environment]::NewLine # add a newline
+            )  -Indent ($longAssignmentIndent) -SingleLine)
+        
+        $indentedRight = (Push-Indent -Text $longAssignment.Right.Extent.ToString() -Indent (
+            $longAssignmentIndent + ($equalIndex - $assignmentOffset)
+         ) -SingleLine)
+
+        if ($indentedRight -match '[\r\n]') {
+             $null = $null
+        }
+
+        $indentedLeft + $indentedRight
             # and indent the right side by -Indent.        
-            (Push-Indent -Text $longAssignment.Right.Extent.ToString() -Indent ($longAssignmentIndent + $Indent))
+            
 
         $index = $longAssignment.Extent.EndOffset - $startOffset
     }
@@ -70,7 +84,7 @@ process {
     # If there is any remaining content
     if ($index -lt $text.Length) {
         $text.Substring($index) # include it as-is.
-    }) -join [Environment]::NewLine
+    }) -join ''
 
     [ScriptBlock]::Create($newScript)
 }
