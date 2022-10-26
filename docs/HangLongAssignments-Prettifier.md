@@ -16,9 +16,9 @@ Any assignment statement whose
 #### EXAMPLE 1
 ```PowerShell
 Expand-ScriptBlock {
-    $x = &quot;ThisIsASequenceOfStuff&quot;, 
-        &quot;ThatTakesUpLotsOfSpace&quot;, 
-        &quot;SoTheAssignmentShouldBeHanging&quot;
+    $x = "ThisIsASequenceOfStuff", 
+        "ThatTakesUpLotsOfSpace", 
+        "SoTheAssignmentShouldBeHanging"
 }
 ```
 
@@ -78,7 +78,7 @@ The indentation level.
 ---
 ### Syntax
 ```PowerShell
-Prettifiers/HangLongAssignments.prettify.ps1 [-ScriptBlock] &lt;ScriptBlock&gt; [[-MaximumAssignmentLength] &lt;Int32&gt;] [[-Indent] &lt;Int32&gt;] [&lt;CommonParameters&gt;]
+Prettifiers/HangLongAssignments.prettify.ps1 [-ScriptBlock] <ScriptBlock> [[-MaximumAssignmentLength] <Int32>] [[-Indent] <Int32>] [<CommonParameters>]
 ```
 ---
 

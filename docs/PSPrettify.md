@@ -1,4 +1,3 @@
-
 Expand-ScriptBlock
 ------------------
 ### Synopsis
@@ -28,11 +27,11 @@ Expand-ScriptBlock -ScriptBlock {
 ```PowerShell
 Expand-ScriptBlock -ScriptBlock {
     if (1) {
-    $x = &quot;ThisIsASequenceOfStuff&quot;,
-       &quot;ThatTakesUpLotsOfSpace&quot;,
-       &quot;SoTheAssignmentShouldBeHanging&quot;, $(
+    $x = "ThisIsASequenceOfStuff",
+       "ThatTakesUpLotsOfSpace",
+       "SoTheAssignmentShouldBeHanging", $(
             if ($y) {
-                &quot;z&quot;
+                "z"
             }
         )
     }
@@ -95,8 +94,6 @@ A collection of parameters.
 ---
 ### Syntax
 ```PowerShell
-Expand-ScriptBlock [-ScriptBlock] &lt;ScriptBlock&gt; [[-Prettifier] &lt;String[]&gt;] [[-Parameter] &lt;IDictionary&gt;] [&lt;CommonParameters&gt;]
+Expand-ScriptBlock [-ScriptBlock] <ScriptBlock> [[-Prettifier] <String[]>] [[-Parameter] <IDictionary>] [<CommonParameters>]
 ```
 ---
-
-

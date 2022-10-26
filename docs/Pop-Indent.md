@@ -1,4 +1,3 @@
-
 Pop-Indent
 ----------
 ### Synopsis
@@ -13,9 +12,9 @@ Pops text indentation.  This removes indentation from text, based off of the fir
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
-Pop-Indent &#39;            
+Pop-Indent '            
     pop indent will trim initial indentation
-&#39;
+'
 ```
 
 ---
@@ -37,15 +36,29 @@ The text to outdent
 
 
 ---
+#### **SingleLine**
+
+If set, will remove indentation from a single line.
+
+
+
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
+---
 ### Syntax
 ```PowerShell
-Pop-Indent [[-Text] &lt;String&gt;] [&lt;CommonParameters&gt;]
+Pop-Indent [[-Text] <String>] [-SingleLine] [<CommonParameters>]
 ```
 ---
 ### Notes
 If the text has multiple lines, the first non-whitespace line will determine how much indentation is removed.
 
 This way, if there is nested indentation within the text, it will be unaffected.
-
-
-

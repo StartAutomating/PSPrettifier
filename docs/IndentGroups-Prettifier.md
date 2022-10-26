@@ -76,7 +76,7 @@ The initial depth.  By default, zero.
 ---
 ### Syntax
 ```PowerShell
-Prettifiers/IndentGroups.prettify.ps1 [-ScriptBlock] &lt;ScriptBlock&gt; [[-Indent] &lt;Int32&gt;] [[-Depth] &lt;Int32&gt;] [&lt;CommonParameters&gt;]
+Prettifiers/IndentGroups.prettify.ps1 [-ScriptBlock] <ScriptBlock> [[-Indent] <Int32>] [[-Depth] <Int32>] [<CommonParameters>]
 ```
 ---
 ### Notes
@@ -85,7 +85,6 @@ This Prettifier uses the `[PSParser]`
 1. GroupStart/GroupEnd will be used to calculate depth.
 2. Depth will be used to determine the desired indentation.
 3. Each line between various points of depth should be indented to that point.
-
 
 
 

@@ -1,4 +1,3 @@
-
 Push-Indent
 -----------
 ### Synopsis
@@ -92,10 +91,59 @@ By default, this will match PowerShell herestring starts.
 
 
 ---
+#### **CommentStart**
+
+Many languages support multiline comments, which should not be indented.
+-CommentStart describes the start of a multiline comment.
+By default, this will match PowerShell multiline comment starts.
+
+
+
+> **Type**: ```[Regex]```
+
+> **Required**: false
+
+> **Position**: 5
+
+> **PipelineInput**:false
+
+
+
+---
+#### **CommentEnd**
+
+Many languages support multiline comments, which should not be indented.
+-CommentEnd describes the start of a multiline comment.
+By default, this will match PowerShell multiline comment ends.
+
+
+
+> **Type**: ```[Regex]```
+
+> **Required**: false
+
+> **Position**: 6
+
+> **PipelineInput**:false
+
+
+
+---
+#### **SingleLine**
+
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
+---
 ### Syntax
 ```PowerShell
-Push-Indent [[-Text] &lt;String&gt;] [[-Indent] &lt;Int32&gt;] [[-HereDocStart] &lt;Regex&gt;] [[-HereDocEnd] &lt;Regex&gt;] [&lt;CommonParameters&gt;]
+Push-Indent [[-Text] <String>] [[-Indent] <Int32>] [[-HereDocStart] <Regex>] [[-HereDocEnd] <Regex>] [[-CommentStart] <Regex>] [[-CommentEnd] <Regex>] [-SingleLine] [<CommonParameters>]
 ```
 ---
-
-
