@@ -1,4 +1,3 @@
-
 Get-Prettifier
 --------------
 ### Synopsis
@@ -398,14 +397,14 @@ If set, will output the help for the extensions
 
 ---
 ### Outputs
-Extension
+* Extension
+
+
 
 
 ---
 ### Syntax
 ```PowerShell
-Get-Prettifier [[-PrettifierPath] &lt;String&gt;] [-Force] [[-CommandName] &lt;String[]&gt;] [[-PrettifierName] &lt;String[]&gt;] [-Like] [-Match] [-DynamicParameter] [-CouldRun] [[-CouldPipe] &lt;PSObject&gt;] [-Run] [-Stream] [[-DynamicParameterSetName] &lt;String&gt;] [[-DynamicParameterPositionOffset] &lt;Int32&gt;] [-NoMandatoryDynamicParameter] [-RequirePrettifierAttribute] [[-ValidateInput] &lt;PSObject&gt;] [-AllValid] [[-ParameterSetName] &lt;String&gt;] [[-Parameter] &lt;IDictionary&gt;] [-SteppablePipeline] [-Help] [&lt;CommonParameters&gt;]
+Get-Prettifier [[-PrettifierPath] <String>] [-Force] [[-CommandName] <String[]>] [[-PrettifierName] <String[]>] [-Like] [-Match] [-DynamicParameter] [-CouldRun] [[-CouldPipe] <PSObject>] [-Run] [-Stream] [[-DynamicParameterSetName] <String>] [[-DynamicParameterPositionOffset] <Int32>] [-NoMandatoryDynamicParameter] [-RequirePrettifierAttribute] [[-ValidateInput] <PSObject>] [-AllValid] [[-ParameterSetName] <String>] [[-Parameter] <IDictionary>] [-SteppablePipeline] [-Help] [<CommonParameters>]
 ```
 ---
-
-
