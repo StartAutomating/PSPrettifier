@@ -38,14 +38,17 @@ function Pop-Indent
 
         for ($lineOffset = 0; $lineOffset -le ($textLines.Count / 2); $lineOffset++) {
             
-            $firstLineOffset = $(
-                $null = $textLines[$lineOffset] -match $countIndent;
-                $matches.i.Length
-            )
-            $lastLineOffset = $(
-                $null = $textLines[(-1 - $lineOffset)] -match $countIndent
-                $matches.i.Length
-            )
+            $firstLineOffset = 
+                if ($textLines[$lineOffset] -match '^\s{0,}\S[\s\S]+$') {
+                    $null = $textLines[$lineOffset] -match $countIndent;
+                    $matches.i.Length
+                } else { 0 }
+
+            $lastLineOffset = 
+                if ($textLines[(-1 - $lineOffset)] -match '^\s{0,}\S[\s\S]+$')  {
+                    $null = $textLines[(-1 - $lineOffset)] -match $countIndent
+                    $matches.i.Length
+                } else { 0 }                                        
             $offsetMax = [Math]::max($firstLineOffset,$lastLineOffset)
             if ($offsetMax) {
                 $targetIndent = $offsetMax
