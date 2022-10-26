@@ -28,9 +28,8 @@ Get-Prettifier
 |Name                                                                                        |Synopsis                         |
 |--------------------------------------------------------------------------------------------|---------------------------------|
 |[HangLongAssignments.prettify.ps1.DisplayName](Prettifiers/HangLongAssignments.prettify.ps1)|Hangs long assignment statements.|
-|[NormalizeAssignment.prettify.ps1.DisplayName](Prettifiers/NormalizeAssignment.prettify.ps1)|
+|[NormalizeAssignment.prettify.ps1.DisplayName](Prettifiers/NormalizeAssignment.prettify.ps1)|Normalizes Assignment Statements |
 |[IndentGroups.prettify.ps1.DisplayName](Prettifiers/IndentGroups.prettify.ps1)              |Indents Groups                   |
-
 
 
 
