@@ -44,7 +44,7 @@ The `[ScriptBlock]` to Prettify.
 #### **MaximumAssignmentLength**
 
 The threshold of what makes an assignment 'too long'.
-By default, 60 characters.
+By default, 200 characters.
 
 
 
@@ -81,7 +81,6 @@ The indentation level.
 Prettifiers/HangLongAssignments.prettify.ps1 [-ScriptBlock] <ScriptBlock> [[-MaximumAssignmentLength] <Int32>] [[-Indent] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
