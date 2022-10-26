@@ -23,21 +23,6 @@ Expand-ScriptBlock -ScriptBlock {
      }
     }
 }
-#### EXAMPLE 2
-```PowerShell
-Expand-ScriptBlock -ScriptBlock {
-    if (1) {
-    $x = "ThisIsASequenceOfStuff",
-       "ThatTakesUpLotsOfSpace",
-       "SoTheAssignmentShouldBeHanging", $(
-            if ($y) {
-                "z"
-            }
-        )
-    }
-}
-```
-
 ---
 ### Parameters
 #### **ScriptBlock**
